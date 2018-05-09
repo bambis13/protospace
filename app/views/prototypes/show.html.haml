@@ -34,6 +34,24 @@
       %h4 Tag List
       %ul.proto-tag-list.list-inline
         %li
-          %a{href: "#", class: "btn btn-default"} iPad
+          %a{href: "#", class: "btn btn-default"} ラバーガール
         %li
-          %a{href: "#", class: "btn btn-default"} wireframe
+          %a{href: "#", class: "btn btn-default"} セーラームーン
+  .row.proto-comments
+    = render partial: 'comments/form', collection: @prototype
+
+
+
+    / .form-inlign{:role => "form"}
+    /   %form#new_comment.new_comment{"accept-charset" => "UTF-8", :action => "/prototypes/#{@prototype.id}/comments", "data-remote" => "true", :method => "post"}
+    /     %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+    /     %input#comment_user_id{:name => "comment[user_id]", :type => "hidden", :value => "#{@user_id}"}/
+    /     %input#comment_prototype_id{:name => "comment[prototype_id]", :type => "hidden", :value => "#{@prototype.id}"}/
+    /     %h4 Write a comment
+    /     .row
+    /       .form-group.col-md-10
+    /         %textarea#comment_field.form-control{:name => "comment[content]", :placeholder => "Input comment", :required => "required", :rows => "3"}
+    /           :preserve
+    /       .form-group.col-md-2
+    /         %input.btn.btn-primary{:name => "commit", :type => "submit", :value => "comment"}/
+
