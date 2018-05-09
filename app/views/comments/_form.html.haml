@@ -1,0 +1,9 @@
+  %h4.col-md-12
+    Comments
+    %span#comments_count.num
+      (0)
+  .col-md-8
+    %h4 Write a comment
+    #comments
+      = form_for [@comment, @prototype] do |f|
+        = f.text_field :content, class: 'form-control', id: 'comment_field', placeholder: 'type in something!'
