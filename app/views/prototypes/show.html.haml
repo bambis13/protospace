@@ -34,6 +34,11 @@
       %h4 Tag List
       %ul.proto-tag-list.list-inline
         %li
-          %a{href: "#", class: "btn btn-default"} iPad
+          %a{href: "#", class: "btn btn-default"} ラバーガール
         %li
-          %a{href: "#", class: "btn btn-default"} wireframe
+          %a{href: "#", class: "btn btn-default"} セーラームーン
+  .row.proto-comments
+    = render partial: "comments/form", locals: {comment: @comment, prototype: @prototype}
+
+
+
