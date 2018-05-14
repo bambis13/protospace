@@ -1,23 +1,6 @@
-.comment
-  %h4.col-md-12
-    Comments
-    %span#comments_count.num
-      (0)
-  .col-md-8
-    #comments
-      - @comments.each do |comment|
-        .media
-          .media-left
-            %a{:href => ""}
-              / %img.media-object{:alt => "64x64", "data-holder" => "{\"rendered\":\"true\"}", "data-src" => "holder.js/64x64", :src => "https://ymt-space.s3-ap-northeast-1.amazonaws.com/uploads/avatar/avatar/68/thumb_20160720040213.jpg?X-Amz-Expires=600&X-Amz-Date=20180511T013028Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIXN4XI62W3I547BQ/20180511/ap-northeast-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=3479563e76d1097b713c22b49c37ccc22f15252421796c87765d586fbbc2e7e2", :style => "width: 64px; height: 64px;"}/
-          .media-body
-            %h4#top-aligned-media.media-heading
-
-            %p
-              = comment.content
-    .form-inlign
-      %h4 Write a comment
-      #comments
-        = form_for [@prototype, @comment] do |f|
-          = f.text_field :content, class: 'form-control', id: 'comment_field', placeholder: 'type in something!'
-          = f.submit 'Send', class: 'form__submit'
+.form-inlign
+  %h4 Write a comment
+  #comments
+    = form_for [@prototype, @comment] do |f|
+      = f.text_field :content, class: 'form-control', id: 'comment_field', placeholder: 'type in something!'
+      = f.submit 'Send', class: 'form__submit'

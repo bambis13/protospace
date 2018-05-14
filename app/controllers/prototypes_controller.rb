@@ -21,6 +21,7 @@ class PrototypesController < ApplicationController
 
   def show
     @comment = Comment.new
+    @comments = Comment.where(prototype_id: params[:id]).includes(:user)
   end
 
   private

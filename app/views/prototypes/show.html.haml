@@ -38,6 +38,8 @@
         %li
           %a{href: "#", class: "btn btn-default"} セーラームーン
   .row.proto-comments
+    = render partial: "comments/index", collection: @comments
+  .row.proto-comments--form
     = render partial: "comments/form", locals: {comment: @comment, prototype: @prototype}
 
 
