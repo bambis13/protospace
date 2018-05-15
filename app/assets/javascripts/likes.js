@@ -4,8 +4,9 @@ $(function(){
     e.preventDefault();
     var $likeSum = $("#like-sum")
     console.log(this)
-    like_function(data-id, $(this), $heart, $likeSum)
-    console.log(1)
+    var protoId = $(this).data('id')
+    console.log(protoId)
+    like_function(protoId, $(this), $heart, $likeSum)
   });
 
   function like_function(id, button, heart, sum) {
@@ -13,7 +14,7 @@ $(function(){
         $.ajax({
           url: "/likes/" + id,
           type: "delete",
-          data: {prototype_id: id, dataType: "json"}
+          data: {prototype_id: id,dataType: "json"}
         })
         .done(function(data){
         button.removeClass("decrement").addClass("increment")
