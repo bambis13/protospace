@@ -3,18 +3,17 @@ $(function(){
   $("#like-button").on("click", function(e){
     e.preventDefault();
     var $likeSum = $("#like-sum")
-    console.log(this)
-    var protoId = $(this).data('id')
-    console.log(protoId)
-    like_function(protoId, $(this), $heart, $likeSum)
+    var likeId = $(this).data('id')
+    var protoId = location.pathname.split('/')[2];
+    like_function(protoId, likeId, $(this), $heart, $likeSum)
   });
 
-  function like_function(id, button, heart, sum) {
+  function like_function(protoId, likeId, button, heart, sum) {
     if (button.hasClass("decrement")){
         $.ajax({
-          url: "/likes/" + id,
+          url: "prototypes" + protoId + "/likes/" + likeId,
           type: "delete",
-          data: {prototype_id: id,dataType: "json"}
+          data: {prototype_id: protoId,dataType: "json"}
         })
         .done(function(data){
         button.removeClass("decrement").addClass("increment")
@@ -23,9 +22,9 @@ $(function(){
         })
       }else{
         $.ajax({
-          url: "/likes",
+          url: "/prototypes/" + protoId+ "/likes",
           type: "post",
-          data: {prototype_id: id, dataType: "json"}
+          data: {prototype_id: protoId, dataType: "json"}
         })
         .done(function(data){
         button.removeClass("increment").addClass("decrement")
