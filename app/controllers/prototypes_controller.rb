@@ -24,6 +24,14 @@ class PrototypesController < ApplicationController
     @comments = Comment.where(prototype_id: params[:id]).includes(:user)
   end
 
+  def delete
+    @prototype = Prototype.find(params[:id])
+  end
+
+  def edit
+    @prototype = Prototype.find(params[:id])
+  end
+
   private
 
   def set_prototype

@@ -41,6 +41,5 @@
     = render partial: "comments/index", collection: @comments
   .row.proto-comments--form
     = render partial: "comments/form", locals: {comment: @comment, prototype: @prototype}
-
-
-
+  .row.proto-comments--delete
+    = render partial: "comments/delete", locals: {comment: @comment, prototype: @prototype}
