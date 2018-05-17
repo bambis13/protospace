@@ -12,15 +12,18 @@ $(function(){
   function like_function(protoId, likeId, button, heart, sum) {
     if (button.hasClass("decrement")){
         $.ajax({
-          url: "prototypes" + protoId + "/likes/" + likeId,
+          url: "/prototypes/" + protoId + "/likes/" + likeId,
           type: "delete",
           data: {prototype_id: protoId,dataType: "json"}
         })
         .done(function(data){
-        button.removeClass("decrement").addClass("increment")
-        heart.attr("src", "/assets/icon_heart.svg")
-        sum.text(data["count"])
-        $("#like-button").prop('disabled', false)
+          button.removeClass("decrement").addClass("increment")
+          heart.attr("src", "/assets/icon_heart.svg")
+          sum.text(data["count"])
+          $("#like-button").prop('disabled', false)
+        })
+        .fail(function(data){
+          alert('error!')
         })
       }else{
         $.ajax({
@@ -29,10 +32,13 @@ $(function(){
           data: {prototype_id: protoId, dataType: "json"}
         })
         .done(function(data){
-        button.removeClass("increment").addClass("decrement")
-        heart.attr("src", "/assets/icon_heart_red.svg")
-        sum.text(data["count"])
-        $("#like-button").prop('disabled', false)
+          button.removeClass("increment").addClass("decrement")
+          heart.attr("src", "/assets/heartbeat.svg")
+          sum.text(data["count"])
+          $("#like-button").prop('disabled', false)
+        })
+        .fail(function(data){
+          alert('error!')
         })
       }
   }
