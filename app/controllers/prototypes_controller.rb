@@ -24,8 +24,9 @@ class PrototypesController < ApplicationController
     @comments = Comment.where(prototype_id: params[:id]).includes(:user)
   end
 
-  def delete
+  def destroy
     @prototype = Prototype.find(params[:id])
+    @prototype.destroy if @prototype.user_id == current_user.id
   end
 
   def edit

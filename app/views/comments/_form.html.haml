@@ -4,5 +4,3 @@
     = form_for [@prototype, @comment] do |f|
       = f.text_field :content, class: 'form-control', id: 'comment_field', placeholder: 'type in something!'
       = f.submit 'Send', class: 'form__submit'
-      = button_to 'Delete', {controller: comment, action: 'destroy'},{class: 'form__delete',method: :delete}
-      = button_to 'Edit', {contoroller: comment, action: 'edit'},{class: 'form__edit', method: :get}
