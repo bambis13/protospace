@@ -2,7 +2,7 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: :show
 
   def index
-    @prototypes = Prototype.order("RAND()").limit(20)
+    @prototypes = Prototype.rand.limit(20)
     respond_to do |format|
       format.html
       format.json
@@ -27,6 +27,19 @@ class PrototypesController < ApplicationController
   end
 
   def popular
+    @prototypes = Prototype.popular.limit(20)
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
+  def newest
+    @prototypes = Prototype.newest.limit(20)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   private
