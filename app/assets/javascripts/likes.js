@@ -14,9 +14,11 @@ $(function(){
         $.ajax({
           url: "/prototypes/" + protoId + "/likes/" + likeId,
           type: "delete",
-          data: {prototype_id: protoId,dataType: "json"}
+          data: prototype_id: protoId,
+          dataType: "json"
         })
         .done(function(data){
+          console.log(data)
           button.removeClass("decrement").addClass("increment")
           heart.attr("src", "/assets/icon_heart.svg")
           sum.text(data["count"])
@@ -29,9 +31,11 @@ $(function(){
         $.ajax({
           url: "/prototypes/" + protoId+ "/likes",
           type: "post",
-          data: {prototype_id: protoId, dataType: "json"}
+          data: prototype_id: protoId,
+          dataType: "json"
         })
         .done(function(data){
+          console.log(data)
           button.removeClass("increment").addClass("decrement")
           heart.attr("src", "/assets/heartbeat.svg")
           sum.text(data["count"])
