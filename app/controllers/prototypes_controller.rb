@@ -23,9 +23,6 @@ class PrototypesController < ApplicationController
      end
   end
 
-  def show
-  end
-
   def popular
     @prototypes = Prototype.popular.limit(20)
     respond_to do |format|
@@ -42,7 +39,16 @@ class PrototypesController < ApplicationController
     end
   end
 
+  def show
+    if user_signed_in?
+      @like = Like.find_by(user_id: current_user.id, prototype_id: params[:id])
+    else
+      @like = Like.find_by(prototype_id: params[:id])
+    end
+  end
+
   private
+
   def set_prototype
     @prototype = Prototype.find(params[:id])
   end
