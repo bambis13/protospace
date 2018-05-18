@@ -3,10 +3,6 @@ class PrototypesController < ApplicationController
 
   def index
     @prototypes = Prototype.order("RAND()").limit(20)
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   def new
@@ -31,10 +27,8 @@ class PrototypesController < ApplicationController
     end
   end
 
-  def popular
-  end
-
   private
+
   def set_prototype
     @prototype = Prototype.find(params[:id])
   end
