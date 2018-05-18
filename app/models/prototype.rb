@@ -26,4 +26,8 @@ class Prototype < ActiveRecord::Base
   def posted_date
     created_at.strftime('%b %d %a')
   end
+
+  scope :popular, -> {order('likes_count DESC')}
+  scope :newest, -> {order('id DESC')}
+  scope :rand, -> {order('RAND()')}
 end
