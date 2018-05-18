@@ -4,7 +4,6 @@ class LikesController < ApplicationController
 
   def create
     @like = Like.create(user_id: current_user.id, prototype_id: @prototype.id)
-    # @likes = Like.where(prototype_id: @prototype.id)
     respond_to do |format|
       format.html {redirect_to prototype_path(@prototype)}
       format.json
@@ -17,11 +16,9 @@ class LikesController < ApplicationController
       format.html {redirect_to prototype_path(@prototype)}
       format.json
     end
-    # @likes = Like.where(prototype_id: @prototype.id)
   end
 
   def set_prototype
-    # binding.pry
    @prototype = Prototype.find(params[:prototype_id])
   end
 
