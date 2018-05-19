@@ -1,0 +1,20 @@
+- if @comments.present?
+  .comment
+    %h4.comments_count.num Comments(0)
+    .col-md-8
+    - @comments.each do |comment|
+      #comments
+        .media
+          .media-left
+            %img.media-object{src: comment.user.avatar, style: "width: 64px; height: 64px"}
+          .media-body
+            %h4#top-aligned-media.media-heading
+              =  comment.user.name
+            %p= comment.content
+            = button_to 'Delete', "/prototypes/#{prototype.id}/comments/#{comment.id}",class: 'form__delete',method: :delete
+            = button_to 'Edit', "/prototypes/#{prototype.id}/comments/#{comment.id}/edit",class: 'form__edit', method: :get
+
+
+
+
+

@@ -40,6 +40,17 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = Comment.where(prototype_id: params[:id]).includes(:user)
+  end
+
+  def destroy
+    @prototype = Prototype.find(params[:id])
+    @prototype.destroy if @prototype.user_id == current_user.id
+  end
+
+  def edit
+    @prototype = Prototype.find(params[:id])
     if user_signed_in?
       @like = Like.find_by(user_id: current_user.id, prototype_id: params[:id])
     else

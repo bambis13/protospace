@@ -1,0 +1,6 @@
+.form-inlign
+  %h4 Write a comment
+  #comments
+    = form_for [@prototype, @comment] do |f|
+      = f.text_field :content, class: 'form-control', id: 'comment_field', placeholder: 'type in something!'
+      = f.submit 'Send', class: 'form__submit'
