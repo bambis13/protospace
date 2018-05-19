@@ -32,5 +32,6 @@
         .col-md-12
           %h4 Concept
           = f.text_area :concept, require: true, placeholder: "Input Concept"
+          = f.hidden_field :likes_count, value: '0'
       .row.text-center.proto-btn
         = f.submit "PUBLISH", id: "button", class: "btn btn-lg btn-primary btn-block"
