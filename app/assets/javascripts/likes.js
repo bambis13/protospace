@@ -18,6 +18,7 @@ $(function(){
           dataType: "json"
         })
         .done(function(data){
+          debugger;
           console.log(data)
           button.removeClass("decrement").addClass("increment")
           heart.attr("src", "/assets/icon_heart.svg")
@@ -36,6 +37,7 @@ $(function(){
         })
         .done(function(data){
           console.log(data)
+          debugger;
           button.removeClass("increment").addClass("decrement")
           heart.attr("src", "/assets/heartbeat.svg")
           sum.text(data["count"])

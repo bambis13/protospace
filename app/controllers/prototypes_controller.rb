@@ -51,11 +51,6 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype = Prototype.find(params[:id])
-    if user_signed_in?
-      @like = Like.find_by(user_id: current_user.id, prototype_id: params[:id])
-    else
-      @like = Like.find_by(prototype_id: params[:id])
-    end
   end
 
   private
@@ -73,5 +68,13 @@ class PrototypesController < ApplicationController
       :likes_count,
       captured_images_attributes: [:content, :status]
     )
+  end
+
+  def set_like
+    if user_signed_in?
+      @like = Like.find_by(user_id: current_user.id, prototype_id: params[:id])
+    else
+      @like = Like.find_by(prototype_id: params[:id])
+    end
   end
 end
