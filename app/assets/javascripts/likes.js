@@ -14,12 +14,11 @@ $(function(){
         $.ajax({
           url: "/prototypes/" + protoId + "/likes/" + likeId,
           type: "delete",
-          data: prototype_id: protoId,
+          data: {prototype_id: protoId},
           dataType: "json"
         })
         .done(function(data){
-          debugger;
-          console.log(data)
+          console.log('destroy')
           button.removeClass("decrement").addClass("increment")
           heart.attr("src", "/assets/icon_heart.svg")
           sum.text(data["count"])
@@ -32,13 +31,12 @@ $(function(){
         $.ajax({
           url: "/prototypes/" + protoId+ "/likes",
           type: "post",
-          data: prototype_id: protoId,
+          data: {prototype_id: protoId},
           dataType: "json"
         })
         .done(function(data){
-          console.log(data)
-          debugger;
-          button.removeClass("increment").addClass("decrement")
+          console.log('create')
+          button.removeClass("increment").addClass("decrement").data('id', data.id)
           heart.attr("src", "/assets/heartbeat.svg")
           sum.text(data["count"])
           $("#like-button").prop('disabled', false)

@@ -1,5 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :set_prototype, only: :show
+  before_action :set_like ,only: :show
 
   def index
     @prototypes = Prototype.rand.limit(20)
