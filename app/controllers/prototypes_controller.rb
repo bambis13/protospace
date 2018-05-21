@@ -16,10 +16,14 @@ class PrototypesController < ApplicationController
 
   def create
     @prototype = Prototype.new(prototype_params)
+    # @prototype.save
+    # redirect_to :root, notice: 'New prototype was successfully created'
+    # tag_list = params[:tag_name].split(',')
     if @prototype.save
+      # @prototype.save_prototypes(tag_list)
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      render :new, alert: 'YNew prototype was unsuccessfully created'
+      render :new, alert: 'New prototype was unsuccessfully created'
      end
   end
 
