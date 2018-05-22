@@ -44,6 +44,7 @@ class PrototypesController < ApplicationController
   def show
     @comment = Comment.new
     @comments = Comment.where(prototype_id: params[:id]).includes(:user)
+    @tags = @prototype.tags_maps.includes(:tag)
   end
 
   def destroy
@@ -76,4 +77,5 @@ class PrototypesController < ApplicationController
       captured_images_attributes: [:content, :status]
     )
   end
+
 end
