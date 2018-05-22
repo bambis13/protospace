@@ -46,7 +46,8 @@ class PrototypesController < ApplicationController
 
   def destroy
     @prototype.destroy if @prototype.user_id == current_user.id
-    redirect_to root_path
+    redirect_to root_path notice: '削除しました。'
+
   end
 
   def edit
