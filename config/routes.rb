@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :prototypes, only: [:index, :new, :create, :show, :destroy, :edit] do
     resources :comments, only: [:create, :destroy, :edit, :update]
     resources :likes, only: [:create, :destroy]
+  resources :tags, only: [:show, :index]
   end
 
 end
