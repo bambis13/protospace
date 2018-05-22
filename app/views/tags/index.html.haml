@@ -1,0 +1,9 @@
+.container
+  .row
+    .tags-list
+      %h2 Tags list
+      %ul
+        - @tags.each do |tag|
+          %li.col-md-4
+            %a.btn.btn-default{:href => "/tags"}
+              = tag.name
