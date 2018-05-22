@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: :show
+  before_action :set_prototype, only: [:show, :destroy, :edit]
 
   def index
     @prototypes = Prototype.rand.limit(20)
@@ -45,18 +45,23 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    @prototype = Prototype.find(params[:id])
     @prototype.destroy if @prototype.user_id == current_user.id
+    redirect_to root_path
   end
 
   def edit
-    @prototype = Prototype.find(params[:id])
     if user_signed_in?
       @like = Like.find_by(user_id: current_user.id, prototype_id: params[:id])
     else
       @like = Like.find_by(prototype_id: params[:id])
     end
   end
+
+  # def update
+  #   @prototype = Prototype.find(params[:id])
+  #   @prototype.update(prototype_params)
+  #   redirect_to prototype_path(@prototype)
+  # end
 
   private
 
