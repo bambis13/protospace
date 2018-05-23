@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'prototypes/popular' => 'prototypes#popular'
   get 'prototypes/newest' => 'prototypes#newest'
   resources :users, only: [:show, :edit, :update]
+  resources :tags, only: [:show, :index]
   resources :prototypes, only: [:index, :new, :create, :show, :destroy, :edit] do
     resources :comments, only: [:create, :destroy, :edit, :update]
     resources :likes, only: [:create, :destroy]

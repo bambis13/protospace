@@ -1,0 +1,27 @@
+.tags-list h2 {
+  font-weight: 100;
+  margin-bottom: 20px;
+}
+
+.tags-list ul, .tags-list li {
+  list-style: none;
+}
+.tags-list ul {
+  overflow: hidden;
+  padding: 0;
+  margin: 30px 0;
+}
+.tags-list li {
+  margin-bottom: 10px;
+}
+.tags-list li a {
+  display: block;
+  text-align: left;
+  padding: 20px;
+  border-radius: 3px;
+}
+.tags-list li a:hover {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(103, 171, 250, 0.2);
+  color: #67ABFA;
+}
