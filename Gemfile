@@ -27,3 +27,4 @@ group :development do
 end
 
 gem "font-awesome-rails"
+gem 'kaminari'
