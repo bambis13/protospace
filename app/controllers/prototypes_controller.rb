@@ -43,8 +43,8 @@ class PrototypesController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = Comment.where(prototype_id: params[:id]).includes(:user)
-    @tags = @prototype.tags_maps.includes(:tag)
+    @comments = Comment.includes(:user).where(prototype_id: params[:id])
+    # @tags = @prototype.tags_maps.includes(:tag)
   end
 
   def destroy
