@@ -14,7 +14,7 @@ $(function(){
         $.ajax({
           url: "/prototypes/" + protoId + "/likes/" + likeId,
           type: "delete",
-          data: prototype_id: protoId,
+          data: {prototype_id: protoId},
           dataType: "json"
         })
         .done(function(data){
@@ -31,7 +31,7 @@ $(function(){
         $.ajax({
           url: "/prototypes/" + protoId+ "/likes",
           type: "post",
-          data: prototype_id: protoId,
+          data: {prototype_id: protoId},
           dataType: "json"
         })
         .done(function(data){

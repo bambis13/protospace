@@ -5,5 +5,5 @@
       %ul
         - @tags.each do |tag|
           %li.col-md-4
-            %a.btn.btn-default{:href => "/tags"}
+            %a.btn.btn-default{:href => "/tags/#{tag[:id]}"}
               = tag.name
