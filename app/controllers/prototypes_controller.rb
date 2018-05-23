@@ -3,7 +3,7 @@ class PrototypesController < ApplicationController
   before_action :set_like ,only: :show
 
   def index
-    @prototypes = Prototype.rand.page(params[:page]).per(5)
+    @prototypes = Prototype.rand.page(params[:page]).per(10)
     respond_to do |format|
       format.html
       format.json
