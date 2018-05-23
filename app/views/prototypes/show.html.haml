@@ -38,7 +38,7 @@
         - @tags.each do |tag|
           %ul.proto-tag-list.list-inline
             %li
-              %a{href: "#", class: "btn btn-default"} 
+              %a{href: "/tags/#{tag[:id]}", class: "btn btn-default"}
                 = tag.name
   .row.proto-comments
     = render partial: "comments/index", locals: {comment: @comments,prototype: @prototype}
