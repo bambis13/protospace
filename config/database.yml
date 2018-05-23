@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: protospace-in-dev_production
-  username: protospace-in-dev
-  password: <%= ENV['PROTOSPACE-IN-DEV_DATABASE_PASSWORD'] %>
+  database: heroku_c2c1486058bb2ac
+  username: b5228dda8ca2a2
+  password: <%= ENV['DATABASE_PASSWORD'] %>
