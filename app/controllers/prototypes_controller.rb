@@ -16,7 +16,7 @@ class PrototypesController < ApplicationController
 
   def create
     @prototype = Prototype.new(prototype_params)
-    tag_list = params[:prototype][:tag_list]
+    tag_list = params[:prototype][:tag_list].reject{|tag| tag == ""}
     if @prototype.save
       @prototype.save_prototypes(tag_list)
       redirect_to :root, notice: 'New prototype was successfully created'
@@ -44,7 +44,7 @@ class PrototypesController < ApplicationController
   def show
     @comment = Comment.new
     @comments = Comment.includes(:user).where(prototype_id: params[:id])
-    # @tags = @prototype.tags_maps.includes(:tag)
+    @tags = @prototype.tags
   end
 
   def destroy

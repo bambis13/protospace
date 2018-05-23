@@ -34,15 +34,12 @@
         = @prototype.concept
     .col-md-3
       %h4 Tag List
-      / - if @tags.present?
-      /   - @tags.each do |tag|
-      /     %ul.proto-tag-list.list-inline
-      /       %li
-      /         %a{href: "#", class: "btn btn-default"} 
-      /           = tag.name
-    / - else
-    /   .col-md-3
-    /   %h4 Tag List
+      - if @tags.present?
+        - @tags.each do |tag|
+          %ul.proto-tag-list.list-inline
+            %li
+              %a{href: "#", class: "btn btn-default"} 
+                = tag.name
   .row.proto-comments
     = render partial: "comments/index", locals: {comment: @comments,prototype: @prototype}
   .row.proto-comments--form
