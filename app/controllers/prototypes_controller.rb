@@ -58,11 +58,21 @@ class PrototypesController < ApplicationController
     end
   end
 
-  # def update
-  #   @prototype = Prototype.find(params[:id])
-  #   @prototype.update(prototype_params)
-  #   redirect_to prototype_path(@prototype)
-  # end
+  def update
+    @prototype = Prototype.find(params[:id])
+    @prototype.update(prototype_params)
+    redirect_to prototype_path(@prototype)
+    if @prototype.update(prototype_params)
+      if params[:content]
+        prototype.find(params [:id]).(captured_images_attributes: [:content])
+        content.destroy
+      end
+      @prototype.captured_images_attributes.create(content: content)
+      redirect_to prototype_path(@prototype)
+    else
+      redirect_to prototype_path(@prototype)
+    end
+  end
 
   private
 

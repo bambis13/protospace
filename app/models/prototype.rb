@@ -28,6 +28,13 @@ class Prototype < ActiveRecord::Base
     created_at.strftime('%b %d %a')
   end
 
+  def update_attributes(attributes)
+    with_transaction_returning_status do
+      self.attributes = atrributes
+      save
+    end
+  end
+
   scope :popular, -> {order('likes_count DESC')}
   scope :newest, -> {order('id DESC')}
   scope :rand, -> {order('RAND()')}
