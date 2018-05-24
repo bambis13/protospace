@@ -1,6 +1,6 @@
 class PrototypesController < ApplicationController
 
-  before_action :set_prototype, only: [:show, :destroy, :edit]
+  before_action :set_prototype, only: [:show, :destroy, :edit, :update]
   before_action :set_like ,only: :show
 
   
@@ -15,7 +15,7 @@ class PrototypesController < ApplicationController
 
   def new
     @prototype = Prototype.new
-    @prototype.captured_images.build
+    4.times{@prototype.captured_images.build}
   end
 
   def create
@@ -23,7 +23,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      render :new, alert: 'YNew prototype was unsuccessfully created'
+      render :new, alert: 'New prototype was unsuccessfully created'
      end
   end
 
@@ -55,7 +55,7 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    @prototype = Prototype.find(params[:id])
+    4.times{@prototype.captured_images.build}
     if user_signed_in?
       @like = Like.find_by(user_id: current_user.id, prototype_id: params[:id])
     else
@@ -63,11 +63,10 @@ class PrototypesController < ApplicationController
     end
   end
 
-  # def update
-  #   @prototype = Prototype.find(params[:id])
-  #   @prototype.update(prototype_params)
-  #   redirect_to prototype_path(@prototype)
-  # end
+  def update
+    @prototype.update(prototype_params)
+    redirect_to prototype_path(@prototype)
+  end
 
   private
 
