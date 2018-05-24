@@ -11,10 +11,12 @@
   });
 
    $('.sub_image_file').change(function() {
+    var sub = $(this).parent();
     var fr = new FileReader();
     fr.onload = function() {
       var img = $('<img>').attr('src', fr.result);
-      $('').append(img);
+      $(sub).css('background', 'none');
+      $(sub).append(img);
     };
     fr.readAsDataURL(this.files[0]);
   }); 
