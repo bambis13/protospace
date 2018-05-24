@@ -2,24 +2,26 @@
 
   $('.main_image_file').change(function() {
     var fr = new FileReader();
+    var main = $('#main_image_uploader img');
     fr.onload = function() {
-      var img = $('<img>').attr('src', fr.result);
-      $('#main_image_uploader').css('background', 'none');
-      $('#main_image_uploader').append(img);
+      $(main).empty();
+      $(main).parent().css('background', 'none');
+      $(main).attr('src', fr.result);
     };
     fr.readAsDataURL(this.files[0]);
   });
 
    $('.sub_image_file').change(function() {
-    var sub = $(this).parent();
     var fr = new FileReader();
+    var sub = $(this).parent();
     fr.onload = function() {
-      var img = $('<img>').attr('src', fr.result);
+      $(sub).children('img').empty();
       $(sub).css('background', 'none');
-      $(sub).append(img);
+      $(sub).children('img').attr('src', fr.result);
     };
     fr.readAsDataURL(this.files[0]);
   }); 
 });
+
 
 

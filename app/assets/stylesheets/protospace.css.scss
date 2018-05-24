@@ -431,11 +431,16 @@ body {
       cursor: pointer;
     }
   }
+
   #main_image_uploader img{
-    width: 700px;
+    width: 730px;
+    height: 500px;
+    object-fit: cover;
   }
   .sub_image_uploader img{
-    width: 250px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
   }
 
   .list-group-item {
