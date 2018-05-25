@@ -3,8 +3,6 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :destroy, :edit, :update]
   before_action :set_like ,only: :show
 
-  
-
   def index
     @prototypes = Prototype.rand.page(params[:page]).per(10)
     respond_to do |format|
@@ -63,7 +61,6 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    4.times{@prototype.captured_images.build}
     if user_signed_in?
       @like = Like.find_by(user_id: current_user.id, prototype_id: params[:id])
     else
@@ -78,8 +75,6 @@ class PrototypesController < ApplicationController
         prototype.find(params [:id]).(captured_images_attributes: [:content])
         content.destroy
       end
-      binding.pry
-      # @prototype.captured_images_attributes.create(content: content)
       redirect_to prototype_path(@prototype)
     else
       redirect_to prototype_path(@prototype)

@@ -12,7 +12,6 @@ class Prototype < ActiveRecord::Base
             :catch_copy,
             :concept,
             presence: true
-
   # ユーザが既にいいねしているか確認する奴
   def like_user(user_id)
    likes.find_by(user_id: user_id)
