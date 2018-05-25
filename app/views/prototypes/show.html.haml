@@ -17,7 +17,7 @@
       = render "shared/likes_count", prototype: @prototype, like: @like
   .row
     .col-md-9.image-box
-      = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
+      = image_tag(@prototype.set_main_thumbnail, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
     .col-md-3
       %ul.proto-sub-list.list-group
         - @prototype.captured_images.sub.each do |image|
