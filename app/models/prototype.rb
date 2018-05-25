@@ -35,6 +35,7 @@ class Prototype < ActiveRecord::Base
       self.attributes = atrributes
       save
     end
+  end
 
   def save_prototypes(tags_list)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
