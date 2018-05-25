@@ -6,7 +6,7 @@ class PrototypesController < ApplicationController
   
 
   def index
-    @prototypes = Prototype.rand.limit(20)
+    @prototypes = Prototype.rand.page(params[:page]).per(10)
     respond_to do |format|
       format.html
       format.json
@@ -20,7 +20,9 @@ class PrototypesController < ApplicationController
 
   def create
     @prototype = Prototype.new(prototype_params)
+    tag_list = params[:prototype][:tag_list].reject{|tag| tag == ""}
     if @prototype.save
+      @prototype.save_prototypes(tag_list)
       redirect_to :root, notice: 'New prototype was successfully created'
     else
       render :new, alert: 'New prototype was unsuccessfully created'
@@ -50,7 +52,8 @@ class PrototypesController < ApplicationController
       @like = Like.find_by(prototype_id: params[:id])
     end
     @comment = Comment.new
-    @comments = Comment.where(prototype_id: params[:id]).includes(:user)
+    @comments = Comment.includes(:user).where(prototype_id: params[:id])
+    @tags = @prototype.tags
   end
 
   def destroy

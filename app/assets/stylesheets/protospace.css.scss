@@ -432,6 +432,17 @@ body {
     }
   }
 
+  #main_image_uploader img{
+    width: 730px;
+    height: 500px;
+    object-fit: cover;
+  }
+  .sub_image_uploader img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+
   .list-group-item {
     border: 0;
     margin-bottom: 20px;
@@ -611,6 +622,7 @@ body {
   font-size: 30px;
   font-weight: 200;
 }
+
 .media{
   float: left;
 }
