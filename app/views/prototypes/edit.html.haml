@@ -21,7 +21,7 @@
           - if (@prototype.captured_images.sub.present?)
             = f.fields_for :captured_images, @prototype.captured_images.sub do |image|
               %li.list-group-item.col-md-4.present
-                .image-upload
+                .image-upload.sub_image_uploader
                   = image.file_field :content, class: 'sub_image_file'
                   = image.hidden_field :status, value: "sub"
                   %img{src: image.object.content,alt: "sub_photo",class: 'img-responsive img-size-fix', style: "margin: 0 auto;"}
