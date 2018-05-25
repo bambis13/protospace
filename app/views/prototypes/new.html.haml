@@ -13,17 +13,17 @@
           .cover-image-upload#main_image_uploader
             = f.fields_for :captured_images do |image|
               %img
-              = image.file_field :content, required: true
+              = image.file_field :content, required: true, class: 'main_image_file'
               = image.hidden_field :status, value: "main"
         .col-md-12
           %h4 Sub Thumbnails
           %ul.proto-sub-list.list-group
             - 3.times do |i|
               %li.list-group-item.col-md-4
-                .image-upload
+                .image-upload.sub_image_uploader
                   = f.fields_for :captured_images do |image|
                     %img
-                    = image.file_field :content
+                    = image.file_field :content, class: 'sub_image_file'
                     = image.hidden_field :status, value: "sub"
       .row.proto-description
         .col-md-12
