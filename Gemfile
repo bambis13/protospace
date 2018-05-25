@@ -28,3 +28,7 @@ end
 
 gem "font-awesome-rails"
 gem 'kaminari'
+
+group :production do
+  gem 'unicorn'
+end
