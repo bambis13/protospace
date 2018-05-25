@@ -44,6 +44,11 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    if user_signed_in?
+      @like = Like.find_by(user_id: current_user.id, prototype_id: params[:id])
+    else
+      @like = Like.find_by(prototype_id: params[:id])
+    end
     @comment = Comment.new
     @comments = Comment.where(prototype_id: params[:id]).includes(:user)
   end
@@ -64,8 +69,18 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    @prototype.update(prototype_params)
-    redirect_to prototype_path(@prototype)
+    @prototype.update(prototype_params_update)
+    if @prototype.update(prototype_params_update)
+      if params[:content]
+        prototype.find(params [:id]).(captured_images_attributes: [:content])
+        content.destroy
+      end
+      binding.pry
+      # @prototype.captured_images_attributes.create(content: content)
+      redirect_to prototype_path(@prototype)
+    else
+      redirect_to prototype_path(@prototype)
+    end
   end
 
   private
@@ -85,11 +100,23 @@ class PrototypesController < ApplicationController
     )
   end
 
+
   def set_like
     if user_signed_in?
       @like = Like.find_by(user_id: current_user.id, prototype_id: params[:id])
     else
       @like = Like.find_by(prototype_id: params[:id])
     end
+  end
+
+  def prototype_params_update
+    params.require(:prototype).permit(
+      :title,
+      :catch_copy,
+      :concept,
+      :user_id,
+      :likes_count,
+      captured_images_attributes: [:id, :content, :status]
+    )
   end
 end

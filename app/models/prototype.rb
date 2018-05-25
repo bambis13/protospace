@@ -3,8 +3,8 @@ class Prototype < ActiveRecord::Base
   has_many :captured_images, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
-# コメントと
-  accepts_nested_attributes_for :captured_images, reject_if: :reject_sub_images
+
+  accepts_nested_attributes_for :captured_images, reject_if: :reject_sub_images, allow_destroy: true
 
   validates :title,
             :catch_copy,
@@ -26,6 +26,13 @@ class Prototype < ActiveRecord::Base
 
   def posted_date
     created_at.strftime('%b %d %a')
+  end
+
+  def update_attributes(attributes)
+    with_transaction_returning_status do
+      self.attributes = atrributes
+      save
+    end
   end
 
   scope :popular, -> {order('likes_count DESC')}
