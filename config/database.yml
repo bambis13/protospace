@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: heroku_c2c1486058bb2ac
-  username: b5228dda8ca2a2
+  username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
