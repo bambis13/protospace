@@ -22,7 +22,7 @@
             = f.fields_for :captured_images, @prototype.captured_images.sub do |image|
               %li.list-group-item.col-md-4.present
                 .image-upload
-                  = image.file_field :content
+                  = image.file_field :content, class: 'sub_image_file'
                   = image.hidden_field :status, value: "sub"
                   %img{src: image.object.content,alt: "sub_photo",class: 'img-responsive img-size-fix', style: "margin: 0 auto;"}
               / = f.fields_for :captured_images, @prototype.captured_images do |image|
@@ -35,10 +35,10 @@
             - 3.times do |t|
               = f.fields_for :captured_images, @prototype.captured_images do |image|
                 %li.list-group-item.col-md-4
-                  .image-upload
+                  .image-upload.sub_image_uploader
                     %img
-                    = image.file_field :content, required: true
-                    = image.hidden_field :status, value: "sub"
+                      = image.file_field :content, class: 'sub_image_file'
+                      = image.hidden_field :status, value: "sub"
 
       .row.proto-description
         .col-md-12
@@ -50,5 +50,3 @@
           = f.hidden_field :likes_count, value: '0'
       .row.text-center.proto-btn
         = f.submit "UPDATE", id: "button", class: "btn btn-lg btn-primary btn-block"
-
-lhkgljh
